@@ -1,13 +1,16 @@
 cacheSolve <- function(x, ...) {
   ## Return a matrix that is the inverse of 'x'
-  inv <- x$getInverse() 
-  if(!is.null(inv)){ 
+  
+  inver <- x$getInverse() ## Checks whether the inverse is already calculated or not
+  
+  if(!is.null(inver)){ 
     message("getting cached data") 
-    return(inv)
+    return(inver)
   }
   ##If the inverse has already been calculated (and the matrix has not changed), then the cachesolve should retrieve the inverse from the cache
+  
   data <- x$get()
-  inv <- solve(data)
-  x$setInverse(inv)
-  inv      
+  inver <- solve(data)  ## New data to inver
+  x$setInverse(inver)
+  inver      
 }
